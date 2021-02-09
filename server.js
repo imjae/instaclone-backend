@@ -14,7 +14,6 @@ const resolvers = {
     hello: () => 'bebe',
   },
 };
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
