@@ -24,6 +24,7 @@
     "@babel/core": "^7.12.13",
     "@babel/node": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
+    "@prisma/cli": "^2.16.1",
     "nodemon": "^2.0.7"
   }
 }
