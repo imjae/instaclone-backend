@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 
 // The GraphQL schema
-export default typeDefs = gql`
+export default gql`
   type Movie {
     id: Int!
     title: String!
