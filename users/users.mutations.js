@@ -32,5 +32,20 @@ export default {
         return e;
       }
     },
+
+    login: async (_, { userName, password }) => {
+      const user = client.user.findFirst({
+        where: {
+          userName,
+        },
+      });
+
+      if (!user) {
+        return {
+          ok: false,
+          error: `not find username`,
+        };
+      }
+    },
   },
 };
