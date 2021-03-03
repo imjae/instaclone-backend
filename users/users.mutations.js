@@ -34,7 +34,7 @@ export default {
     },
 
     login: async (_, { userName, password }) => {
-      const user = client.user.findFirst({
+      const user = await client.user.findUnique({
         where: {
           userName,
         },
@@ -46,6 +46,15 @@ export default {
           error: `not find username`,
         };
       }
+
+      const passwordOK = await bcrypt.compare(password, user.password);
+      if(!passwordOK) {
+        return {
+          ok: false,
+          error: `incorrected password`
+        }
+      }
+      console.log(passwordOK);
     },
   },
 };
