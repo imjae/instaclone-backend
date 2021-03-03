@@ -2,9 +2,9 @@ import client from "../client";
 
 export default {
   Query: {
-    seeProfile: async (_, {userName}) => {
+    seeProfile: async (_, { userName }) => {
       return await client.user.findUnique({
-        where: {userName},
+        where: { userName },
       });
     },
   },

@@ -13,12 +13,12 @@ export default {
             OR: [{ userName }, { email }],
           },
         });
-  
-        if(existingUser) {
+
+        if (existingUser) {
           throw new Error("userName or email 이 존재합니다.");
         }
         const uglyPassword = await bcrypt.hash(password, 10);
-  
+
         return await client.user.create({
           data: {
             firstName,
@@ -28,7 +28,7 @@ export default {
             password: uglyPassword,
           },
         });
-      } catch(e) {
+      } catch (e) {
         return e;
       }
     },
