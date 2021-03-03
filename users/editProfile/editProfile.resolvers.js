@@ -5,10 +5,10 @@ export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, userName, email, password:newPassword }
+      { firstName, lastName, userName, email, password: newPassword }
     ) => {
       let uglyPassword = null;
-      if(newPassword) {
+      if (newPassword) {
         uglyPassword = await bcrypt.hash(newPassword, 10);
       }
 
@@ -24,7 +24,7 @@ export default {
           ...(uglyPassword && { password: uglyPassword }),
         },
       });
-      
+
       if (editUser) {
         return {
           ok: true,
