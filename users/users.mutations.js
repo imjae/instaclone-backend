@@ -48,11 +48,11 @@ export default {
       }
 
       const passwordOK = await bcrypt.compare(password, user.password);
-      if(!passwordOK) {
+      if (!passwordOK) {
         return {
           ok: false,
-          error: `incorrected password`
-        }
+          error: `incorrected password`,
+        };
       }
       console.log(passwordOK);
     },
