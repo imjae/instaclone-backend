@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 
 export default gql`
-  type User {
+  type SeeProfileResult {
     id: Int!
     firstName: String!
     lastName: String
@@ -9,5 +9,9 @@ export default gql`
     email: String!
     createdAt: String!
     updatedAt: String!
+  }
+
+  type Query {
+    seeProfile(userName: String!): SeeProfileResult
   }
 `;
