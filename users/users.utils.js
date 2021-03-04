@@ -1,3 +1,4 @@
+import { gqlPluckFromCodeString } from "graphql-tools";
 import jwt from "jsonwebtoken";
 import client from "../client";
 
@@ -23,11 +24,18 @@ export const getUser = async (token) => {
   }
 };
 
-export const protectResolver = (user) => {
-  if (!user) {
+export const protectedResolver = (ourResolver) => (
+  root,
+  args,
+  context,
+  info
+) => {
+  if (!context.loggedInUser) {
     return {
       ok: false,
-      error: "non logged in user",
+      error: "Please log in to perform this action.",
     };
+  } else {
+    return ourResolver(root, args, context, info);
   }
 };
