@@ -24,7 +24,10 @@ export const getUser = async (token) => {
 };
 
 export const protectResolver = (user) => {
-    if(!user) {
-        throw new Error("non logged in user");
-    }
+  if (!user) {
+    return {
+      ok: false,
+      error: "non logged in user",
+    };
+  }
 };
