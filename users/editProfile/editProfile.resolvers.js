@@ -8,6 +8,10 @@ export default {
       { firstName, lastName, userName, email, password: newPassword },
       { loggedInUser }
     ) => {
+      if (!loggedInUser) {
+        throw new Error("not logged In User");
+      }
+
       let uglyPassword = null;
       if (newPassword) {
         uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -15,7 +19,7 @@ export default {
 
       const editUser = await client.user.update({
         where: {
-          id: loggedInUser.id
+          id: loggedInUser.id,
         },
         data: {
           firstName,
