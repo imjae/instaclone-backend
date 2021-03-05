@@ -7,9 +7,12 @@ export default {
     editProfile: protectedResolver(
       async (
         _,
-        { firstName, lastName, userName, email, password: newPassword },
-        { loggedInUser, protectedResolver }
+        { firstName, lastName, userName, email, password: newPassword, bio, avatar },
+        { loggedInUser }
       ) => {
+        const {filename, createReadStream} = await avatar;
+        console.log(filename, createReadStream);
+
         let uglyPassword = null;
         if (newPassword) {
           uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -24,6 +27,7 @@ export default {
             lastName,
             userName,
             email,
+            bio,
             ...(uglyPassword && { password: uglyPassword }),
           },
         });
