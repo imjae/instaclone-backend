@@ -1,3 +1,4 @@
+import { createWriteStream } from "fs";
 import client from "../../client";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
@@ -7,12 +8,21 @@ export default {
     editProfile: protectedResolver(
       async (
         _,
-        { firstName, lastName, userName, email, password: newPassword, bio, avatar },
+        {
+          firstName,
+          lastName,
+          userName,
+          email,
+          password: newPassword,
+          bio,
+          avatar,
+        },
         { loggedInUser }
       ) => {
-        const {filename, createReadStream} = await avatar;
-        const stream = createReadStream();
-        console.log(stream);
+        const { filename, createReadStream } = await avatar;
+        const readStream = createReadStream();
+        const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename);
+        readStream.pipe(writeStream);
 
         let uglyPassword = null;
         if (newPassword) {
