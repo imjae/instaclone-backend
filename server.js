@@ -1,5 +1,7 @@
 require("dotenv").config();
-import { ApolloServer } from "apollo-server";
+import express from "express";
+import logger from "morgan";
+import { ApolloServer } from "apollo-server-express";
 import { typeDefs, resolvers } from "./schema";
 import { getUser, protectedResolver } from "./users/users.utils";
 
@@ -14,8 +16,12 @@ const server = new ApolloServer({
   },
 });
 
+const app = express();
+app.use(logger("tiny"));
+server.applyMiddleware({ app });
+
 const PORT = process.env.PORT;
 
-server.listen(PORT).then(({ url }) => {
-  console.log(`🚀 Server ready at https://localhost:${PORT}        a`);
+app.listen({port: PORT}, () => {
+  console.log(`🚀 Server ready at https://localhost:${PORT}`);
 });
