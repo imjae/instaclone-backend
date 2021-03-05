@@ -11,7 +11,8 @@ export default {
         { loggedInUser }
       ) => {
         const {filename, createReadStream} = await avatar;
-        console.log(filename, createReadStream);
+        const stream = createReadStream();
+        console.log(stream);
 
         let uglyPassword = null;
         if (newPassword) {
