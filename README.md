@@ -5,9 +5,9 @@ Instaclone Backend
 ## User:
 - [x] Create Account
 - [x] See Profile
-- [ ] Login
-- [ ] Edit Profile
-- [ ] Change Avatar (Image Upload)
+- [x] Login
+- [x] Edit Profile
+- [x] Change Avatar (Image Upload)
 - [ ] Follow User
 - [ ] Unfollow User
 - [ ] Search Users
