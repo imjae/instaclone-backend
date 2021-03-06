@@ -25,7 +25,7 @@ export default {
           const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
           const readStream = createReadStream();
           const writeStream = createWriteStream(
-            process.cwd() + "/uploads/" + filename
+            process.cwd() + "/uploads/" + newFilename
           );
           readStream.pipe(writeStream);
           avatarUrl = `http://localhost:4000/statics/${newFilename}`;
