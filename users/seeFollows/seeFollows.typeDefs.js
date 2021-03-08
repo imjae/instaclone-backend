@@ -6,7 +6,7 @@ export default gql`
     error: String
     followers: [User]
   }
-  
+
   type Query {
     seeFollows(userName: String!, page: Int): SeeFollowsResult
   }
