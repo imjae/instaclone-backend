@@ -3,6 +3,13 @@ import client from "../../client";
 export default {
   Query: {
     seeFollows: async (_, { userName, page }) => {
+      const ok = await client.user.findUnique({ where: { userName } });
+      if (!ok) {
+        return {
+          ok: false,
+          error: "Can't unfolllow user",
+        };
+      }
       //   const followers = await client.user.findUnique({ where: { userName } });
       //   .followers({ take: 3, skip: (page - 1) * 3 });
 
