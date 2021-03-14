@@ -1,8 +1,8 @@
-import client from "../../client";
+import { Resolvers } from "../../types";
 
-export default {
+const resolvers: Resolvers = {
   Query: {
-    seeProfile: async (_, { userName }) => {
+    seeProfile: async (_, { userName }, { client }) => {
       return await client.user.findUnique({
         where: { userName },
         include: {
@@ -13,3 +13,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

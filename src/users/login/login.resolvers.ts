@@ -1,10 +1,10 @@
-import client from "../../client";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import * as bcrypt from "bcrypt";
+import * as jwt from "jsonwebtoken";
+import { protectedResolver } from "../users.utils";
 
 export default {
   Mutation: {
-    login: async (_, { userName, password }) => {
+    login: async (_, { userName, password }, { client }) => {
       const user = await client.user.findUnique({
         where: {
           userName,
@@ -26,7 +26,7 @@ export default {
         };
       }
 
-      const token = await jwt.sign({id: user.id}, process.env.SECRET_KEY);
+      const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
       return {
         ok: true,
         token,

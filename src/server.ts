@@ -4,6 +4,7 @@ import * as logger from "morgan";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs, resolvers } from "./schema";
 import { getUser, protectedResolver } from "./users/users.utils";
+import client from "./client";
 
 const server = new ApolloServer({
   typeDefs,
@@ -11,6 +12,7 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     return {
       loggedInUser: await getUser(req.headers.token),
+      client,
       protectedResolver: protectedResolver,
     };
   },
