@@ -1,6 +1,5 @@
 import { createWriteStream } from "fs";
-import client from "../../client";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
 
 export default {
@@ -17,7 +16,7 @@ export default {
           bio,
           avatar,
         },
-        { loggedInUser }
+        { loggedInUser, client }
       ) => {
         let avatarUrl = null;
         if (avatar) {

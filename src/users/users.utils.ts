@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import client from "../client";
-import { Context, Resolver, Resolvers } from "../types";
+import { Resolver } from "../types";
 
 export const getUser = async (token: any) => {
   try {
@@ -8,6 +8,7 @@ export const getUser = async (token: any) => {
       return null;
     }
     const verifyToken: any = await jwt.verify(token, process.env.SECRET_KEY);
+    console.log(verifyToken);
     if (!verifyToken) {
       const user = await client.user.findUnique({
         where: {
@@ -15,6 +16,8 @@ export const getUser = async (token: any) => {
         },
       });
 
+      console.log(user);
+      
       if (user) {
         return user;
       }
@@ -26,12 +29,12 @@ export const getUser = async (token: any) => {
 };
 
 export const protectedResolver = (ourResolver: Resolver) => (
-  root: any,
-  args: any,
-  context: Context,
-  info: any
+  root,
+  args,
+  context,
+  info
 ) => {
-  console.log("context가 있니 ? "+context.loggedInUser);
+  console.log("context: " + context.loggedInUser);
   if (!context.loggedInUser) {
     return {
       ok: false,
