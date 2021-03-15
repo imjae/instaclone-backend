@@ -15,6 +15,8 @@ export const getUser = async (token: any) => {
         },
       });
 
+      console.log(user);
+      
       if (user) {
         return user;
       }

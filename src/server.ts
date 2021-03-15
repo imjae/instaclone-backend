@@ -13,7 +13,6 @@ const server = new ApolloServer({
     return {
       loggedInUser: await getUser(req.headers.token),
       client,
-      protectedResolver: protectedResolver,
     };
   },
 });
