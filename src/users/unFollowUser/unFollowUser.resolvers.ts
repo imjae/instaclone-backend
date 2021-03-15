@@ -1,4 +1,3 @@
-import { disconnect } from "process";
 import client from "../../client";
 import { protectedResolver } from "../users.utils";
 

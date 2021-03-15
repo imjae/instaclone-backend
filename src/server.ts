@@ -3,7 +3,7 @@ import * as express from "express";
 import * as logger from "morgan";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs, resolvers } from "./schema";
-import { getUser, protectedResolver } from "./users/users.utils";
+import { getUser } from "./users/users.utils";
 import client from "./client";
 
 const server = new ApolloServer({
