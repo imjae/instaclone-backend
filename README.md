@@ -13,7 +13,7 @@ Instaclone Backend
 - [x] See Followers w/ Pagination
 - [x] See Following w/ pagination
 - [x] Computed Fields
-- [ ] Search Users
+- [x] Search Users
 
 ## Photos:
 - [ ] See Photo
@@ -26,6 +26,10 @@ Instaclone Backend
 - [ ] See Hashtags
 
 ## Comments:
+- [ ] Comment on Photo
+- [ ] Edit Comment
+- [ ] Delete Comment
+
 # Instaclone
 
 Instaclone Backend Retry
