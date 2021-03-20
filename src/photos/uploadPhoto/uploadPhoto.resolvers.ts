@@ -6,25 +6,31 @@ const resolvers: Resolvers = {
   Mutation: {
     uploadPhoto: protectedResolver(
       async (_, { file, caption }, { loggedInUser }) => {
+        let hashtagObj = [];
         if (caption) {
           // caption 파싱하기
           const hashtags = caption.match(/#[\w]+/g);
-          client.photo.create({
+          hashtagObj = hashtags.map((hashtag: String) => ({
+            where: { hashtag },
+            create: { hashtag },
+          }));
+
+          console.log(hashtagObj);
+
+          return client.photo.create({
             data: {
               file,
               caption,
-              hashtags: {
-                connectOrCreate: [
-                  {
-                    where: {
-                      hashtag: "#food",
-                    },
-                    create: {
-                      hashtag: "#food",
-                    },
-                  },
-                ],
+              user: {
+                connect: {
+                  id: loggedInUser.id,
+                },
               },
+              ...(hashtagObj.length > 0 && {
+                hashtags: {
+                  connectOrCreate: hashtagObj,
+                },
+              }),
             },
           });
           // 파싱한 caption의 hashtag가 존재한다면, 기존 hashrag 가져오고,
