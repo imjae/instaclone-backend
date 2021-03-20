@@ -1,3 +1,4 @@
+import client from "../../client";
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
@@ -7,7 +8,25 @@ const resolvers: Resolvers = {
       async (_, { file, caption }, { loggedInUser }) => {
         if (caption) {
           // caption 파싱하기
-          
+          const hashtags = caption.match(/#[\w]+/g);
+          client.photo.create({
+            data: {
+              file,
+              caption,
+              hashtags: {
+                connectOrCreate: [
+                  {
+                    where: {
+                      hashtag: "#food",
+                    },
+                    create: {
+                      hashtag: "#food",
+                    },
+                  },
+                ],
+              },
+            },
+          });
           // 파싱한 caption의 hashtag가 존재한다면, 기존 hashrag 가져오고,
           // 아니면 새로 생성한다.
         }
