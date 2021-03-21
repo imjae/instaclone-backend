@@ -11,7 +11,7 @@ export default gql`
     #   file      String
     #   caption   String?
     id: Int!
-    user: User
+    user: User!
     file: String!
     caption: String
     hashtags: [Hashtag]
