@@ -17,8 +17,19 @@ const resolvers: Resolvers = {
     },
   },
   Hashtag: {
-      
-  }
+    photos: (parent) => console.log(parent),
+    totalPhotos: async ({ id }) => {
+      return await client.photo.count({
+        where: {
+          hashtags: {
+            some: {
+              id,
+            },
+          },
+        },
+      });
+    },
+  },
 };
 
 export default resolvers;

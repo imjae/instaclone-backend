@@ -28,6 +28,7 @@ export default gql`
     id: Int!
     hashtag: String!
     photos: [Photo]!
+    totalPhotos: Int!
     createdAt: String!
     updatedAt: String!
   }
