@@ -17,8 +17,8 @@ Instaclone Backend
 
 ## Photos:
 - [x] Upload Photo (Parse #)
-- [ ] See Photo
-- [ ] See Hashtags
+- [x] See Photo
+- [x] See Hashtags
 - [ ] Search Photos
 - [ ] Edit Photo
 - [ ] Like / Unlike Photo
