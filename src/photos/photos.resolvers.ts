@@ -17,7 +17,7 @@ const resolvers: Resolvers = {
     },
   },
   Hashtag: {
-    photos: (parent) => console.log(parent),
+    photos: ({ id }, { page }) => (client.hashtag.findUnique({ where: { id } }).photos()),
     totalPhotos: async ({ id }) => {
       return await client.photo.count({
         where: {
