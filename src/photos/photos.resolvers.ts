@@ -16,6 +16,9 @@ const resolvers: Resolvers = {
       });
     },
   },
+  Hashtag: {
+      
+  }
 };
 
 export default resolvers;
