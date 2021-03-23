@@ -9,8 +9,9 @@ const resolvers: Resolvers = {
         let hashtagObj = [];
         if (caption) {
           hashtagObj = processHashtag(caption);
+          console.log(hashtagObj);
 
-          return client.photo.create({
+          return await client.photo.create({
             data: {
               file,
               caption,
@@ -21,7 +22,7 @@ const resolvers: Resolvers = {
               },
               ...(hashtagObj.length > 0 && {
                 hashtags: {
-                  connectOrCreate: processHashtag(caption),
+                  connectOrCreate: hashtagObj,
                 },
               }),
             },
