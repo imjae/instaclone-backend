@@ -15,9 +15,13 @@ const resolvers: Resolvers = {
         },
       });
     },
+    likeCount: async ({ id }) => {
+      return await client.like.count({ where: { photoId: id } });
+    },
   },
   Hashtag: {
-    photos: ({ id }, { page }) => (client.hashtag.findUnique({ where: { id } }).photos()),
+    photos: ({ id }, { page }) =>
+      client.hashtag.findUnique({ where: { id } }).photos(),
     totalPhotos: async ({ id }) => {
       return await client.photo.count({
         where: {
