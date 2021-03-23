@@ -45,7 +45,7 @@ model Hashtag {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   photos      Photo[]
-  totalPhotos Int
+  totalPhotos Int?
 }
 
 model Like {
