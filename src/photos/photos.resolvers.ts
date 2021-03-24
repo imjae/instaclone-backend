@@ -18,6 +18,9 @@ const resolvers: Resolvers = {
     likeCount: async ({ id }) => {
       return await client.like.count({ where: { photoId: id } });
     },
+    commentCount: async ({ id }) => {
+      return await client.comment.count({ where: { photoId: id } });
+    },
   },
   Hashtag: {
     photos: ({ id }, { page }) =>

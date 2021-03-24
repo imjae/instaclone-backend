@@ -28,7 +28,7 @@ Instaclone Backend
 - [ ] Is Mine (Delete Photo)
 
 ## Comments:
-- [ ] Comment on Photo
+- [x] Comment on Photo
 - [ ] Edit Comment
 - [ ] Delete Comment (Is Mine)
 
