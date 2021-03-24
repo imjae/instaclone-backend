@@ -11,8 +11,7 @@ const resolvers: Resolvers = {
         },
       });
 
-      console.log(likes);
-      //   return likes.map((like) => like.user);
+      return likes.map((like) => like.user);
     },
   },
 };
