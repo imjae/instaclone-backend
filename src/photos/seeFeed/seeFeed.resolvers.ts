@@ -2,7 +2,7 @@ import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
 const resolvers: Resolvers = {
-  Mutation: {
+  Query: {
     seeFeed: protectedResolver(async (_, __, { loggedInUser, client }) => {
       return await client.photo.findMany({
         where: {

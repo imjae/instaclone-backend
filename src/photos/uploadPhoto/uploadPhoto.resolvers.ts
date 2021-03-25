@@ -9,9 +9,8 @@ const resolvers: Resolvers = {
         let hashtagObj = [];
         if (caption) {
           hashtagObj = processHashtag(caption);
-          console.log(hashtagObj);
 
-          return await client.photo.create({
+          await client.photo.create({
             data: {
               file,
               caption,
@@ -27,6 +26,14 @@ const resolvers: Resolvers = {
               }),
             },
           });
+
+          return {
+            ok: true,
+          };
+        } 
+        return {
+          ok: false,
+          error: "Writing caption."
         }
       }
     ),
