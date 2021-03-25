@@ -20,7 +20,7 @@ const resolvers: Resolvers = {
         }
         const uglyPassword = await bcrypt.hash(password, 10);
 
-        return await client.user.create({
+        const createUser = await client.user.create({
           data: {
             firstName,
             lastName,
@@ -29,8 +29,22 @@ const resolvers: Resolvers = {
             password: uglyPassword,
           },
         });
+
+        if (createUser) {
+          return {
+            ok: true,
+          };
+        } else {
+          return {
+            ok: false,
+            error: "crateAccount error.",
+          };
+        }
       } catch (e) {
-        return e;
+        return {
+          ok: false,
+          error: "crateAccount Catching error.",
+        };
       }
     },
   },
