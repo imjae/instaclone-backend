@@ -14,7 +14,7 @@ export const getUser = async (token: any) => {
           id: verifyToken.id,
         },
       });
-      
+
       if (user) {
         return user;
       }
@@ -32,10 +32,15 @@ export const protectedResolver = (ourResolver: Resolver) => (
   info
 ) => {
   if (!context.loggedInUser) {
-    return {
-      ok: false,
-      error: "Please log in to perform this action.",
-    };
+    const isQuery = info.operation.operation === "query";
+    if (isQuery) {
+      return null;
+    } else {
+      return {
+        ok: false,
+        error: "Please log in to perform this action.",
+      };
+    }
   } else {
     return ourResolver(root, args, context, info);
   }
