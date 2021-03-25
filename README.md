@@ -29,8 +29,8 @@ Instaclone Backend
 
 ## Comments:
 - [x] Comment on Photo
-- [ ] Edit Comment
 - [ ] Delete Comment (Is Mine)
+- [ ] Edit Comment
 
 ## Extras
 - [ ] S3 Image Upload
