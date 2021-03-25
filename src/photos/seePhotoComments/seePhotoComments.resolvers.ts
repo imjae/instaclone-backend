@@ -3,14 +3,16 @@ import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
   Query: {
-    seePhotoComments: async (_, { id }) => {
-      const a = await client.comment.findMany({
+    seePhotoComments: async (_, { id, page }) => {
+      const commentList2Paging = await client.comment.findMany({
         where: { photoId: id },
-        include: {photo: true},
         orderBy: { updatedAt: "asc" },
+        take: 5,
+        skip: page ? 1 : 0,
+        ...(page && { cursor: { id: page } }),
       });
 
-      return a;
+      return commentList2Paging;
     },
   },
 };
