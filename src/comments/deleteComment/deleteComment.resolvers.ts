@@ -3,7 +3,10 @@ import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Mutation: {
     deleteComment: async (_, { id }, { loggedInUser, client }) => {
-      const comment = await client.comment.findUnique({ where: { id } });
+      const comment = await client.comment.findUnique({
+        where: { id },
+        select: { userId: true },
+      });
       if (!comment) {
         return {
           ok: false,

@@ -3,7 +3,10 @@ import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Mutation: {
     deletePhoto: async (_, { id }, { loggedInUser, client }) => {
-      const photo = await client.photo.findUnique({ where: { id } });
+      const photo = await client.photo.findUnique({
+        where: { id },
+        select: { userId: true },
+      });
       if (!photo) {
         return {
           ok: false,
