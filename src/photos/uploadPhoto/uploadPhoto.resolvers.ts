@@ -9,32 +9,28 @@ const resolvers: Resolvers = {
         let hashtagObj = [];
         if (caption) {
           hashtagObj = processHashtag(caption);
-
-          await client.photo.create({
-            data: {
-              file,
-              caption,
-              user: {
-                connect: {
-                  id: loggedInUser.id,
-                },
-              },
-              ...(hashtagObj.length > 0 && {
-                hashtags: {
-                  connectOrCreate: hashtagObj,
-                },
-              }),
-            },
-          });
-
-          return {
-            ok: true,
-          };
         } 
+
+        await client.photo.create({
+          data: {
+            file,
+            caption,
+            user: {
+              connect: {
+                id: loggedInUser.id,
+              },
+            },
+            ...(hashtagObj.length > 0 && {
+              hashtags: {
+                connectOrCreate: hashtagObj,
+              },
+            }),
+          },
+        });
+
         return {
-          ok: false,
-          error: "Writing caption."
-        }
+          ok: true,
+        };
       }
     ),
   },
