@@ -35,4 +35,4 @@ Instaclone Backend
 ## Refactor
 - [x] Mutation Response
 ## Extras
-- [ ] S3 Image Upload
+- [x] S3 Image Upload
