@@ -36,3 +36,9 @@ Instaclone Backend
 - [x] Mutation Response
 ## Extras
 - [x] S3 Image Upload
+
+## DMs
+- [ ] Create Room
+- [ ] Get Room
+- [ ] Send Message
+- [ ] Realtime Messages
