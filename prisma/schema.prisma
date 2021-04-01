@@ -25,7 +25,9 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   likes     Like[]
-  comments   Comment[]
+  comments  Comment[]
+  rooms     Room[]
+  messages  Message[]
 }
 
 model Photo {
@@ -38,7 +40,7 @@ model Photo {
   file      String
   caption   String?
   likes     Like[]
-  comments   Comment[]
+  comments  Comment[]
 }
 
 model Hashtag {
@@ -71,4 +73,23 @@ model Comment {
   updatedAt DateTime @updatedAt
   userId    Int
   photoId   Int
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  users     User[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  payload   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
