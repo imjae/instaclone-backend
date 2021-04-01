@@ -3,6 +3,7 @@
 Instaclone Backend
 
 ## User:
+
 - [x] Create Account
 - [x] See Profile
 - [x] Login
@@ -16,6 +17,7 @@ Instaclone Backend
 - [x] Search Users
 
 ## Photos:
+
 - [x] Upload Photo (Parse #)
 - [x] See Photo
 - [x] See Hashtags
@@ -28,16 +30,21 @@ Instaclone Backend
 - [x] Is Mine (Delete Photo)
 
 ## Comments:
+
 - [x] Comment on Photo
 - [x] Delete Comment (Is Mine)
 - [x] Edit Comment
 
 ## Refactor
+
 - [x] Mutation Response
+
 ## Extras
+
 - [x] S3 Image Upload
 
 ## DMs
+
 - [ ] Create Room
 - [ ] Get Room
 - [ ] Send Message
