@@ -45,6 +45,9 @@ Instaclone Backend
 
 ## DMs
 
-- [x] See Room
+- [x] See Rooms
 - [ ] Send Message (Create Room)
+- [ ] See Room
+- [ ] Computed Fields
+- [ ] See Message
 - [ ] Realtime Messages
