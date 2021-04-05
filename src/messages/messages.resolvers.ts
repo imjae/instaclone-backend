@@ -11,7 +11,23 @@ const resolvers: Resolvers = {
         },
       });
     },
-    unreadTotal: () => 0,
+    unreadTotal: async ({ id }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return 0;
+      } else {
+        return await client.message.count({
+          where: {
+            read: false,
+            roomId: id,
+            user: {
+              id: {
+                not: loggedInUser.id,
+              },
+            },
+          },
+        });
+      }
+    },
   },
 };
 
