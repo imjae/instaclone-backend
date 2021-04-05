@@ -2,7 +2,7 @@ import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
 const resolvers: Resolvers = {
-  Mutation: {
+  Query: {
     seeRooms: protectedResolver(async (_, __, { client, loggedInUser }) => {
       return await client.room.findMany({
         where: {
