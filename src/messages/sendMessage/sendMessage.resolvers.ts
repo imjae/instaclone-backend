@@ -29,7 +29,7 @@ const resolvers: Resolvers = {
           room = await client.room.create({
             data: {
               users: {
-                connect: [{ id: userId }, { id: loggedInUser }],
+                connect: [{ id: userId }, { id: loggedInUser.id }],
               },
             },
             select: {
