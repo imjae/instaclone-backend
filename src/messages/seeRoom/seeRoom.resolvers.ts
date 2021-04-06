@@ -4,7 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 const resolvers: Resolvers = {
   Query: {
     seeRoom: protectedResolver(async (_, { id }, { loggedInUser, client }) => {
-      await client.room.findFirst({
+      const room = await client.room.findFirst({
         where: {
           id,
           users: {
@@ -18,6 +18,8 @@ const resolvers: Resolvers = {
           messages: true,
         },
       });
+
+      return room;
     }),
   },
 };

@@ -5,7 +5,7 @@ const resolvers: Resolvers = {
   Room: {
     users: async ({ id }) => client.room.findUnique({ where: { id } }).users(),
     messages: async ({ id }) => {
-      client.message.findMany({
+      return client.message.findMany({
         where: {
           roomId: id,
         },
@@ -28,6 +28,12 @@ const resolvers: Resolvers = {
         });
       }
     },
+  },
+  Message: {
+    user: async ({ id }) =>
+      await client.message.findUnique({ where: { id } }).user(),
+    room: async ({ id }) =>
+      await client.message.findUnique({ where: { id } }).room(),
   },
 };
 
