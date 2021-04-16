@@ -28,7 +28,6 @@ export default {
         return withFilter(
           () => pubsub.asyncIterator(NEW_MESSAGE),
           async ({ roomUpdates }, { id }, { loggedInUser }) => {
-            console.log(roomUpdates.roomId === id);
             if( roomUpdates.roomId === id ) {
               const room = await client.room.findFirst({
                 where: {
