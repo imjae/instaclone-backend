@@ -22,7 +22,7 @@ const apollo = new ApolloServer({
         connection: { context },
       } = ctx;
       return {
-        loggedInUser: context,
+        loggedInUser: context.loggedInUser,
         client,
       };
     }
@@ -34,7 +34,7 @@ const apollo = new ApolloServer({
         throw new Error("You can't listen.");
       }
       const loggedInUser = await getUser(token);
-      return loggedInUser;
+      return { loggedInUser };
     },
   },
 });
