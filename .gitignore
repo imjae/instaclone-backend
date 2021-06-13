@@ -118,3 +118,6 @@ dist
 
 #prisma/migrations
 prisma/migrations/
+
+
+build/
