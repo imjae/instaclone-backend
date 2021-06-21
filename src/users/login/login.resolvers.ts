@@ -11,8 +11,6 @@ const resolvers: Resolvers = {
         },
       });
 
-      console.log(user);
-
       if (!user) {
         return {
           ok: false,
