@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
         };
       }
 
-      await client.comment.create({
+      const newComment = await client.comment.create({
         data: {
           payload,
           user: {
@@ -30,6 +30,7 @@ const resolvers: Resolvers = {
 
       return {
         ok: true,
+        id: newComment.id,
       };
     },
   },
